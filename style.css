@@ -1,0 +1,263 @@
+:root {
+	--gray-100: #f2f2f2;
+	--gray-200: #d9d9d9;
+	--gray-300: #808080;
+	--gray-400: #333;
+	--gray-500: #262626;
+	--gray-600: #1a1a1a;
+	--gray-700: #0d0d0d;
+	--purple: #8284fa;
+	--purpledark: #5e60ce;
+	--blue: #4ea8de;
+	--blue-dark: #1e6f9f;
+	--danger: #e25858;
+
+  --font-family: "Inter", sans-serif;
+  --second-family: "Roboto", sans-serif;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray-600);
+}
+
+.todo-container {
+  width: 800px;
+}
+
+.todo-header {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 55px;
+}
+
+.todo-title {
+  font-weight: 900;
+  font-size: 40px;
+  color: var(--blue);
+}
+
+.purpl {
+  color: var(--purpledark);
+}
+
+.input-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--gray-500);
+  border-radius: 16px;
+  border: 1px solid var(--gray-700);
+
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--gray-300);
+  outline: none;
+
+}
+
+.add-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  width: 90px;
+  padding: 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue-dark);
+  color: var(--gray-100);
+  font-family: var(--font-family);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.todos-list {
+  margin-top: 24px;
+  list-style: none;
+  position: relative;
+  min-height: 200px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: var(--gray-500);
+  color: var(--gray-100);
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.todo-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.todo-checkbox:checked {
+  background-color: var(--purpledark);
+  border-color: var(--purpledark);
+}
+
+.todo-checkbox:checked::after{
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  top: 5%;
+  left: 20%;
+
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 16px;
+  color: var(--gray-100);
+}
+
+.todo-checkbox:checked + .todo-text {
+  text-decoration: line-through;
+  color: var(--gray-300);
+  opacity: 0.8;
+  /* position: relative; */
+}
+
+
+.delete-btn {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.delete-btn::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url('./img/delete-btn.svg') no-repeat center;
+  background-size: contain;
+}
+
+.delete-btn:hover::before {
+  opacity: 0.8;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  top: 70%;
+  left: 0;
+  transform: translateY(-50%);
+
+}
+
+.empty-state.active {
+  opacity: 1;
+  transform: translateY(-50%);
+
+}
+
+.empty-icon {
+  margin-bottom: 16px; 
+}
+
+.empty-img {
+  width: 56px;
+  height: 56px;
+  opacity: 0.6;
+}
+
+.empty-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gray-300);
+  margin-bottom: 8px;
+}
+
+.empty-text {
+  font-size: 14px;
+  color: var(--gray-300);
+  opacity: 0.8;
+}
+
+.tasks-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gray-400);
+}
+
+.stats-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.stats-block.completed .stats-title {
+  color: var(--purple);
+}
+
+.stats-counter {
+  background: var(--gray-400);
+  color: var(--gray-200);
+  padding: 2px 8px;
+  border-radius: 100%;
+  font-size: 12px;
+  font-weight: 700;
+
+}
